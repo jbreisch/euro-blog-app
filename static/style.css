@@ -1,26 +1,156 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 1rem;
 }
+
+h1 {
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .timeline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    padding-left: 30px;
 }
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #333;
+}
+
 .post {
-    background: white;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-    text-align: left;
+    position: relative;
+    margin-bottom: 30px;
 }
-.post img {
+
+.post::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+}
+
+.post-content {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-content p {
+    margin: 0 0 15px;
+}
+
+.post-content img {
     max-width: 100%;
     height: auto;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.post-date {
+    font-size: 0.8em;
+    color: #777;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .timeline {
+        padding-left: 20px;
+    }
+
+    .post::before {
+        left: -24px;
+    }
+} */
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.info p, .info ul {
+    margin-bottom: 1rem;
+}
+
+.timeline {
+    margin-top: 2rem;
+}
+
+.post {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.post p {
+    margin-bottom: 1rem;
+}
+
+.post img {
+    max-width: 100%;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.post-date {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
 }

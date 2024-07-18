@@ -3,21 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
+    <title>Euro 2024</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>My Blog</h1>
-    <div class="timeline">
-        {% for post in posts %}
-            <div class="post">
-                <p>{{ post.content }}</p>
-                {% if post.image_url %}
-                    <img src="{{ post.image_url }}" alt="Image">
-                {% endif %}
-                <small>{{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
-            </div>
-        {% endfor %}
+    <div class="container">
+        <h1>Euro 2024</h1>
+        <div class="info">
+            <p>This is a lightweight blog built to share parts of my 2024 Europe trip</p>
+            <p>The blog was built using Flask (a Python web framework), HTML, and CSS</p>
+            <p>The blog uses Google Cloud, specifically, Firestore for DB entries, GCS for image buckets, and App Engine for hosting</p>
+            <p>A Telegram bot and webhook were created to forward any messages to the backend and use them as blog posts</p>
+            <p>Combined, this allows me to send a simple text message to post to this blog</p>
+            <p>I mainly built this so that my mother knows I'm still alive, but I also thought it would be a cool way to learn more about Gcloud</p>
+            <p>Enough nerd stuff, here is the trip itinerary:</p>
+            <ul>
+                <li>Budapest: July 19-22</li>
+                <li>Vienna: July 22-25</li>
+                <li>Amsterdam: July 25-28</li>
+                <li>Porto: July 28-31</li>
+                <li>Prague: August 1-3</li>
+                <li>Copenhagen: August 3-6</li>
+                <li>London: August 6-10</li>
+            </ul>
+        </div>
+        <div class="timeline">
+            <h2>Blog</h2>
+            {% for post in posts %}
+                <div class="post">
+                    <p>{{ post.content }}</p>
+                    {% if post.image_url %}
+                        <img src="{{ post.image_url }}" alt="Post image">
+                    {% endif %}
+                    <div class="post-date" data-timestamp="{{ post.timestamp }}">{{ post.timestamp }}</div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const timeZone = "America/Phoenix";  // Change to desired time zone
+            document.querySelectorAll('.post-date').forEach(function(element) {
+                const timestamp = element.getAttribute('data-timestamp');
+                const date = new Date(timestamp);
+                const options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: timeZone };
+                element.textContent = date.toLocaleString('en-US', options);
+            });
+        });
+    </script>
 </body>
 </html>
